@@ -7,7 +7,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>WoW Alpha_0.01</title>
 </head>
 <body>
@@ -16,11 +17,13 @@
             <?php $myHero = new Hero(2000, 0, 'excalibure', 250, 'Le bouclier d\'Achille', 600);?>
         </p>
         <p>
-            <?php $myOrc = new Orc(2500, 0);?>  
+            <?php $myOrc = new Orc(800, 0);?>  
         </p>
         <?php
             while ($myHero->getHealth() > 0 && $myOrc->getHealth() > 0) {
-                echo '<p>';
+        ?>
+        <p>
+        <?php
                 $myOrc->attack();
                 $myHero->attacked($myOrc->getDamage());
                 $myHero->moreRage();
@@ -34,23 +37,36 @@
                 }
                 echo 'Votre armure a absorbé ' . $ptsAbs . ' points d\'attaque.<br>';
                 echo 'vous avez perdu ' . $ptsHealth . ' points de vie.<br>';
-                echo 'Il reste ' . $myHero->getHealth() . ' points de vie à votre Héro. <br>';
+                $heroHealth = ($myHero->getHealth() > 0) ? $myHero->getHealth() : 0;
+                echo 'Il reste ' . $heroHealth . ' points de vie à votre Héro. <br>';
                 echo 'Votre Héro a maintenant ' . $myHero->getRage() . ' points de rage ! <br>';
-                echo '</p>';
-                if ($myHero->getRage() >= 100) {
+        ?>
+            </p>
+            <p>
+        <?php
+                if ($myHero->getRage() >= 100 && $myHero->getHealth() > 0) {
                     $myOrc->setHealth($myOrc->getHealth() - $myHero->getWeaponDamage());
                     $myHero->setRage(0);
                     echo 'Votre Héro est enragé et inflige ' . $myHero->getWeaponDamage() . ' points de vie à l\'abominable Orc des neiges ! <br>';
-                    echo 'L\'abominable Orc des neiges a maintenant ' . $myOrc->getHealth() . ' points de vie.';
+                    $orcHealth = ($myOrc->getHealth() > 0) ? $myOrc->getHealth() : 0;
+                    echo 'L\'abominable Orc des neiges a maintenant ' . $orcHealth . ' points de vie.<br>';
                 }
+                echo '</p>';
             }
+            echo '<p>';
             if ($myHero->getHealth() <= 0) {
                 echo 'Votre Hero est mort courageusement au combat ! <br>';
             }
             if ($myOrc->getHealth() <= 0) {
                 echo 'Votre Hero a vaincu l\'abominable orc des neiges ! <br>';
             }
+            echo '</p>';
         ?>
     </div>
+
+    <!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
