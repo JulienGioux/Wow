@@ -16,10 +16,10 @@
             <?php $myHero = new Hero(2000, 0, 'excalibure', 250, 'Le bouclier d\'Achille', 600);?>
         </p>
         <p>
-            <?php $myOrc = new Orc(500, 0);?>  
+            <?php $myOrc = new Orc(2500, 0);?>  
         </p>
         <?php
-            while ($myHero->getHealth() >= 0 && $myOrc->getHealth() >= 0) {
+            while ($myHero->getHealth() > 0 && $myOrc->getHealth() > 0) {
                 echo '<p>';
                 $myOrc->attack();
                 $myHero->attacked($myOrc->getDamage());
@@ -39,6 +39,9 @@
                 echo '</p>';
                 if ($myHero->getRage() >= 100) {
                     $myOrc->setHealth($myOrc->getHealth() - $myHero->getWeaponDamage());
+                    $myHero->setRage(0);
+                    echo 'Votre Héro est enragé et inflige ' . $myHero->getWeaponDamage() . ' points de vie à l\'abominable Orc des neiges ! <br>';
+                    echo 'L\'abominable Orc des neiges a maintenant ' . $myOrc->getHealth() . ' points de vie.';
                 }
             }
             if ($myHero->getHealth() <= 0) {
