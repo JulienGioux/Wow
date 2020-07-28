@@ -41,8 +41,8 @@
                 echo 'Il reste ' . $heroHealth . ' points de vie à votre Héro. <br>';
                 echo 'Votre Héro a maintenant ' . $myHero->getRage() . ' points de rage ! <br>';
         ?>
-            </p>
-            <p>
+        </p>
+        <p>
         <?php
                 if ($myHero->getRage() >= 100 && $myHero->getHealth() > 0) {
                     $myOrc->setHealth($myOrc->getHealth() - $myHero->getWeaponDamage());
@@ -51,7 +51,9 @@
                     $orcHealth = ($myOrc->getHealth() > 0) ? $myOrc->getHealth() : 0;
                     echo 'L\'abominable Orc des neiges a maintenant ' . $orcHealth . ' points de vie.<br>';
                 }
-                echo '</p>';
+        ?>
+        <p>
+        <?php
             }
             echo '<p>';
             if ($myHero->getHealth() <= 0) {
@@ -60,8 +62,8 @@
             if ($myOrc->getHealth() <= 0) {
                 echo 'Votre Hero a vaincu l\'abominable orc des neiges ! <br>';
             }
-            echo '</p>';
         ?>
+        <p>
     </div>
 
     <!-- JS, Popper.js, and jQuery -->
