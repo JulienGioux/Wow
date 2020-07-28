@@ -16,7 +16,7 @@
         <div class="card mb-3 mx-3 col-md-5">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="..." class="card-img" alt="...">
+                    <img src="assets\img\hero.png" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -30,7 +30,7 @@
         <div class="card mb-3 mx-3 col-md-5">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="..." class="card-img" alt="...">
+                    <img src="assets\img\orc.png" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
